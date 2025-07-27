@@ -34,7 +34,7 @@ export function DictionariesSection() {
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="francais-arabe" className="gap-2">
             <BookOpen className="w-4 h-4" />
-            Dictionnaire Français-Arabe
+            Dictionnaires juridiques
           </TabsTrigger>
           <TabsTrigger value="terminologie" className="gap-2">
             <Languages className="w-4 h-4" />
@@ -87,7 +87,7 @@ export function DictionariesSection() {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <BookOpen className="w-5 h-5 text-purple-600" />
-                    Dictionnaire Français-Arabe
+                    Dictionnaires juridiques
                   </CardTitle>
                   <p className="text-sm text-gray-600">15,000 termes juridiques bilingues français-arabe</p>
                 </CardHeader>

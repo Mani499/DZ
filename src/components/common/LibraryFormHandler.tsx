@@ -1,16 +1,31 @@
 
 import React, { useState, useEffect } from 'react';
 import { AddLibraryResourceForm } from '@/components/forms/AddLibraryResourceForm';
+import { AddDictionnaireJuridiqueForm } from '@/components/forms/AddDictionnaireJuridiqueForm';
+import { AddTerminologieSpecialiseeForm } from '@/components/forms/AddTerminologieSpecialiseeForm';
 
 export function LibraryFormHandler() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isDictionnaireOpen, setIsDictionnaireOpen] = useState(false);
+  const [isTerminologieOpen, setIsTerminologieOpen] = useState(false);
   const [resourceType, setResourceType] = useState<'ouvrage' | 'revue' | 'journal' | 'article' | 'video' | 'directory'>('ouvrage');
 
   useEffect(() => {
     const handleOpenLibraryForm = (event: CustomEvent) => {
       console.log('Ouverture formulaire bibliothèque:', event.detail);
-      setResourceType(event.detail.resourceType);
-      setIsOpen(true);
+      const type = event.detail.resourceType;
+      
+      if (type === 'directory') {
+        // Formulaire spécialisé pour dictionnaires juridiques
+        setIsDictionnaireOpen(true);
+      } else if (type === 'article') {
+        // Formulaire spécialisé pour terminologie spécialisée
+        setIsTerminologieOpen(true);
+      } else {
+        // Formulaire générique pour les autres types
+        setResourceType(type);
+        setIsOpen(true);
+      }
     };
 
     window.addEventListener('open-library-form', handleOpenLibraryForm as EventListener);
@@ -21,10 +36,22 @@ export function LibraryFormHandler() {
   }, []);
 
   return (
-    <AddLibraryResourceForm
-      isOpen={isOpen}
-      onClose={() => setIsOpen(false)}
-      resourceType={resourceType}
-    />
+    <>
+      <AddLibraryResourceForm
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        resourceType={resourceType}
+      />
+      
+      <AddDictionnaireJuridiqueForm
+        isOpen={isDictionnaireOpen}
+        onClose={() => setIsDictionnaireOpen(false)}
+      />
+      
+      <AddTerminologieSpecialiseeForm
+        isOpen={isTerminologieOpen}
+        onClose={() => setIsTerminologieOpen(false)}
+      />
+    </>
   );
 }
