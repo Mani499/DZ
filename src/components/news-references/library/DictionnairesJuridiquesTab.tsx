@@ -39,7 +39,7 @@ export function DictionnairesJuridiquesTab() {
 
   return (
     <div className="space-y-6">
-      <ActionButtons resourceType="directory" />
+      <ActionButtons resourceType="dictionnaire-juridique" />
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {dictionnaires.map((dictionnaire) => (

@@ -6,7 +6,7 @@ import { ApiImportModal } from '@/components/modals/ApiImportModal';
 import { useApiModalHandler } from '@/hooks/useApiModalHandler';
 
 interface ActionButtonsProps {
-  resourceType?: 'ouvrage' | 'revue' | 'journal' | 'article' | 'video' | 'directory';
+  resourceType?: 'ouvrage' | 'revue' | 'journal' | 'article' | 'video' | 'directory' | 'dictionnaire-juridique' | 'terminologie-specialisee';
 }
 
 export function ActionButtons({ resourceType = 'ouvrage' }: ActionButtonsProps) {

@@ -15,10 +15,10 @@ export function LibraryFormHandler() {
       console.log('Ouverture formulaire bibliothèque:', event.detail);
       const type = event.detail.resourceType;
       
-      if (type === 'directory') {
+      if (type === 'dictionnaire-juridique') {
         // Formulaire spécialisé pour dictionnaires juridiques
         setIsDictionnaireOpen(true);
-      } else if (type === 'article') {
+      } else if (type === 'terminologie-specialisee') {
         // Formulaire spécialisé pour terminologie spécialisée
         setIsTerminologieOpen(true);
       } else {
