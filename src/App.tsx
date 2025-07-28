@@ -16,6 +16,9 @@ import { initializeSampleData } from '@/data/sampleData';
 import { useAppStore } from '@/stores/appStore';
 
 function App() {
+  // 🔥 INDICATEUR BRANCHE LYO - CHANGEMENTS ACTIFS
+  const [showLyoBanner, setShowLyoBanner] = React.useState(true);
+  
   // Initialiser les handlers universels et les données d'exemple au démarrage
   React.useEffect(() => {
     initializeUniversalButtonHandlers();
@@ -43,6 +46,18 @@ function App() {
           }}
         >
             <div className="min-h-screen bg-gray-50">
+              {/* 🔥 BANNIÈRE TEST BRANCHE LYO */}
+              {showLyoBanner && (
+                <div className="bg-gradient-to-r from-green-500 to-blue-500 text-white px-4 py-2 text-center font-bold relative">
+                  🔥 BRANCHE LYO ACTIVE - Dictionnaires juridiques + 2 nouveaux formulaires bibliothèque 🔥
+                  <button 
+                    onClick={() => setShowLyoBanner(false)}
+                    className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 px-2 py-1 rounded text-sm"
+                  >
+                    ✕
+                  </button>
+                </div>
+              )}
               <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/admin" element={<AdminPanel />} />
@@ -60,3 +75,6 @@ function App() {
 }
 
 export default App;
+
+// TEST LYO: Vérification des changements
+console.log('🔥 BRANCHE LYO ACTIVE - Changements dictionnaires et bibliothèque appliqués');
